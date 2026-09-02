@@ -26,7 +26,7 @@ class MemberRepositoryTest {
 
     // then
     Member findMember = memberRepository.findById(savedMember.getId());
-    assertThat(findMember).isEqualTo(findMember);
+    assertThat(findMember).isEqualTo(savedMember);
   }
 
   @Test
