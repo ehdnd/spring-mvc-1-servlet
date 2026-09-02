@@ -9,6 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * 클래스 단위 -> 메서드 단위
+ * @RequestMappting 클래스 레벨과 메서드 레벨 조합
+ */
+
 // @RequestMapping이 메서드 단위이기에 하나로 묶을 수 있다.
 @Controller
 @RequestMapping("/springmvc/v2/members")

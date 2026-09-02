@@ -14,7 +14,7 @@ public class OldController implements Controller {
   // 핸들러 어댑터도 찾고 실행해야한다.
 
   @Override
-  public @Nullable ModelAndView handleRequest(HttpServletRequest request,
+  public ModelAndView handleRequest(HttpServletRequest request,
       HttpServletResponse response) throws Exception {
     System.out.println("OldController.handleRequest");
     return new ModelAndView("new-form");
