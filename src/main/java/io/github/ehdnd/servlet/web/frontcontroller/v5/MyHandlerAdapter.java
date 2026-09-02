@@ -13,4 +13,6 @@ public interface MyHandlerAdapter {
   ModelView handle(HttpServletRequest req, HttpServletResponse resp, Object handler)
       throws ServletException, IOException;
 
+  // Q: 왜 ModelView 를 반환하도록 했는가? V4 처럼 이름만 주고 생성하도록 하지 않은 이유는?
+  // A: 
 }

@@ -38,6 +38,8 @@ public class FrontControllerServletV2 extends HttpServlet {
     }
 
     MyView view = controller.process(req, resp);
+
+    // 공통기능 - 컨트롤러에서 뷰로 이동 
     view.render(req, resp);
   }
 }

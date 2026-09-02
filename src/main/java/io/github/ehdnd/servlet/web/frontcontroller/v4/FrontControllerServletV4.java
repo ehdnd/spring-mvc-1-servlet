@@ -40,7 +40,8 @@ public class FrontControllerServletV4 extends HttpServlet {
     }
 
     Map<String, String> paramMap = createParamMap(req);
-    Map<String, Object> model = new HashMap<>(); // model을 제작해 전달
+    // 별도의 Model 객체 (ModelView) -> model 제작해 전달 
+    Map<String, Object> model = new HashMap<>();
     
     String viewName = controller.process(paramMap, model);
     MyView view = viewResolver(viewName);
@@ -48,12 +49,12 @@ public class FrontControllerServletV4 extends HttpServlet {
     view.render(model, req, resp);
   }
 
-  private static @NonNull MyView viewResolver(String viewName) {
+  private static MyView viewResolver(String viewName) {
     return new MyView("/WEB-INF/views/" + viewName + ".jsp");
   }
 
   // 큰 로직들 중 세세한 로직이라 따로 메서드를 뽑아냈다.
-  private static @NonNull Map<String, String> createParamMap(HttpServletRequest req) {
+  private static Map<String, String> createParamMap(HttpServletRequest req) {
     Map<String, String> paramMap = new HashMap<>();
     req.getParameterNames().asIterator()
         .forEachRemaining(paramName -> paramMap.put(paramName, req.getParameter(paramName)));

@@ -39,7 +39,9 @@ public class FrontControllerServletV3 extends HttpServlet {
       return;
     }
 
+    // req -> paramMap 도입 - 종속성 제거
     Map<String, String> paramMap = createParamMap(req);
+    // req -> 별도의 Model 객체 (ModelView)
     ModelView modelView = controller.process(paramMap);
 
     String viewName = modelView.getViewName();
@@ -48,12 +50,12 @@ public class FrontControllerServletV3 extends HttpServlet {
     view.render(modelView.getModel(), req, resp);
   }
 
-  private static @NonNull MyView viewResolver(String viewName) {
+  private static MyView viewResolver(String viewName) {
     return new MyView("/WEB-INF/views/" + viewName + ".jsp");
   }
 
   // 큰 로직들 중 세세한 로직이라 따로 메서드를 뽑아냈다.
-  private static @NonNull Map<String, String> createParamMap(HttpServletRequest req) {
+  private static Map<String, String> createParamMap(HttpServletRequest req) {
     Map<String, String> paramMap = new HashMap<>();
     req.getParameterNames().asIterator()
         .forEachRemaining(paramName -> paramMap.put(paramName, req.getParameter(paramName)));
